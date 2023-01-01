@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Set status to debug to see if log4j2 is working correctly-->
+<Configuration status="debug"> <!--Remove monitorInterval if you never configure logging at runtime-->
+
+    <Appenders>
+        <Console name="ConsoleAppender" target="SYSTEM_OUT">
+            <PatternLayout pattern="%style{%date{DEFAULT}}{white}
+                %highlight{%-5level}{FATAL=bg_red, ERROR=red, WARN=yellow, INFO=white}
+                %message%n"/>
+        </Console>
+    </Appenders>
+
+    <Loggers>
+        <Root level="trace" includeLocation="false">
+            <AppenderRef ref="RandomAccessFileAppenderError" level="error"/>
+            <AppenderRef ref="RandomAccessFileAppenderInfo" level="info"/>
+            <AppenderRef ref="RandomAccessFileAppenderTrace"/>
+            <AppenderRef ref="ConsoleAppender" level="info"/>
+            <AppenderRef ref="VisualAppender" level="trace"/>
+        </Root>
+    </Loggers>
+</Configuration>
